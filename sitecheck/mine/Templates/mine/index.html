@@ -1,0 +1,51 @@
+{% extends 'mine/base.html' %}
+
+{% block content %}
+    <h1>List of sites</h1>
+
+    <h3><a href="file_upload">Upload file</a></h3>
+
+
+    <table >
+        <thead>
+            <tr>
+                <th>url</th>
+                <th>http_code</th>
+                <th>date</th>
+                <th>ip_address</th>
+                <th>timeout</th>
+                <th><a href="">Check All</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in page_obj %}
+                <tr>
+                    <td>{{ row.url }}</td>
+                    <td>{{ row.http_code }}</td>
+                    <td>{{ row.date }}</td>
+                    <td>{{ row.ip_address }}</td>
+                    <td>{{ row.tiemout }}</td>
+                    <td><a href="">check</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endblock %}
