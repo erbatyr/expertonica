@@ -14,7 +14,7 @@
                 <th>date</th>
                 <th>ip_address</th>
                 <th>timeout</th>
-                <th><a href="">Check All</a></th>
+                <th>check it now?!</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                     <td>{{ row.http_code }}</td>
                     <td>{{ row.date }}</td>
                     <td>{{ row.ip_address }}</td>
-                    <td>{{ row.tiemout }}</td>
-                    <td><a href="">check</a></td>
+                    <td>{{ row.timeout }}</td>
+                    <td><a href="?url={{ row.url }}">check</a></td>
                 </tr>
             {% endfor %}
         </tbody>
